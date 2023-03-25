@@ -3,6 +3,8 @@ require_once __DIR__ . '/../Config.class.php';
 
 use Firebase\JWT\JWT;
 
+//TODO: add check for all endpoints that include fetching/updating/deleting a user by id
+
 Flight::route('GET /username', function () {
     $valid_user = Flight::get('validUser');
     Flight::json($valid_user['username']);
