@@ -34,7 +34,7 @@ Flight::route('PUT /question_type/@id', function ($id) {
 });
 
 Flight::route('POST /question_type', function () {
-    $new_user = Flight::request()->data->getData();
-    Flight::json(Flight::questionTypeService()->add_element($new_user));
+    $new_question_type = Flight::request()->data->getData();
+    Flight::json(Flight::questionTypeService()->add_element($new_question_type));
 });
 ?>

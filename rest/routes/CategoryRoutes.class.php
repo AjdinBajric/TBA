@@ -34,7 +34,7 @@ Flight::route('PUT /category/@id', function ($id) {
 });
 
 Flight::route('POST /category', function () {
-    $new_user = Flight::request()->data->getData();
-    Flight::json(Flight::categoryService()->add_element($new_user));
+    $new_category = Flight::request()->data->getData();
+    Flight::json(Flight::categoryService()->add_element($new_category));
 });
 ?>
