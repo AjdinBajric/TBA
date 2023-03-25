@@ -14,8 +14,8 @@ require_once __DIR__ . '/dao/QuestionTypeDao.class.php';
 require_once __DIR__ . '/dao/CategoryDao.class.php';
 require_once __DIR__ . '/services/CategoryService.class.php';
 
-require_once __DIR__ . '/dao/TestDao.class.php';
-require_once __DIR__ . '/services/TestService.class.php';
+require_once __DIR__ . '/dao/QuizDao.class.php';
+require_once __DIR__ . '/services/QuizService.class.php';
 
 require_once __DIR__ . '/dao/QuestionDao.class.php';
 require_once __DIR__ . '/services/QuestionService.class.php';
@@ -36,8 +36,8 @@ Flight::register('questionTypeService', 'QuestionTypeService');
 Flight::register('categoryDao', 'CategoryDao');
 Flight::register('categoryService', 'CategoryService');
 
-Flight::register('testDao', 'TestDao');
-Flight::register('testService', 'TestService');
+Flight::register('quizDao', 'QuizDao');
+Flight::register('quizService', 'QuizService');
 
 Flight::register('questionDao', 'QuestionDao');
 Flight::register('questionService', 'QuestionService');
@@ -51,7 +51,7 @@ Flight::register('quizQuestionService', 'QuizQuestionService');
 require_once __DIR__ . '/routes/UserRoutes.php';
 require_once __DIR__ . '/routes/QuestionTypeRoutes.php';
 require_once __DIR__ . '/routes/CategoryRoutes.class.php';
-require_once __DIR__ . '/routes/TestRoutes.class.php';
+require_once __DIR__ . '/routes/QuizRoutes.class.php';
 require_once __DIR__ . '/routes/QuestionRoutes.class.php';
 require_once __DIR__ . '/routes/QuestionChoiceRoutes.class.php';
 require_once __DIR__ . '/routes/QuizQuestionRoutes.class.php';
