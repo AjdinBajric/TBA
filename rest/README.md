@@ -1,2 +1,2 @@
 # TBA
-SSSD + Web Dev course project
+Web Dev course project
