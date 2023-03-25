@@ -1,16 +1,25 @@
 <?php
 require_once __DIR__ . '/../Config.class.php';
-require_once __DIR__.'/../helpers/helpers.php';
+require_once __DIR__ . '/../helpers/helpers.php';
 
 Flight::route('GET /question', function () {
-    Flight::json(Flight::questionService()->get_all());
+    $questions = Flight::questionService()->get_all();
+    foreach ($questions as &$element) {
+        if ($element['image'] != null) {
+            $element['image'] = base64_encode($element['image']);
+        }
+    }
+    Flight::json($questions);
 });
 
 Flight::route('GET /question/@id', function ($id) {
     $question = Flight::questionService()->get_by_id($id);
-    if ($question)
+    if ($question) {
+        if ($question['image'] != null) {
+            $question['image'] = base64_encode($question['image']);
+        }
         Flight::json($question);
-    else
+    } else
         Flight::json(['message' => 'Question does not exist']);
 });
 
@@ -49,6 +58,9 @@ Flight::route('POST /question', function () {
     if (!isset($category['id'])) $error_messages[] = "Category does not exist";
     if (!isset($question_type['id'])) $error_messages[] = "Question type does not exist";
     if (count($error_messages) == 0) {
+        if (array_key_exists('image', $new_question)) {
+            $new_question['image'] = base64_decode($new_question['image']);
+        }
         Flight::json(Flight::questionService()->add_element($new_question));
     } else {
         Flight::json(["message" => $error_messages]);
