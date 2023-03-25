@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../Config.class.php';
+require_once __DIR__.'/../helpers/helpers.php';
 
 Flight::route('GET /question', function () {
     Flight::json(Flight::questionService()->get_all());

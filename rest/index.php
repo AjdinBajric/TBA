@@ -20,6 +20,9 @@ require_once __DIR__.'/services/TestService.class.php';
 require_once __DIR__.'/dao/QuestionDao.class.php';
 require_once __DIR__.'/services/QuestionService.class.php';
 
+require_once __DIR__ . '/dao/QuestionChoiceDao.class.php';
+require_once __DIR__ . '/services/QuestionChoiceService.class.php';
+
 
 
 Flight::register('userDao','UserDao');
@@ -37,11 +40,15 @@ Flight::register('testService', 'TestService');
 Flight::register('questionDao','QuestionDao');
 Flight::register('questionService', 'QuestionService');
 
+Flight::register('questionChoiceDao','QuestionChoiceDao');
+Flight::register('questionChoiceService', 'QuestionChoiceService');
+
 require_once __DIR__ . '/routes/UserRoutes.php';
 require_once __DIR__ . '/routes/QuestionTypeRoutes.php';
 require_once __DIR__ . '/routes/CategoryRoutes.class.php';
 require_once __DIR__ . '/routes/TestRoutes.class.php';
 require_once __DIR__ . '/routes/QuestionRoutes.class.php';
+require_once __DIR__ . '/routes/QuestionChoiceRoutes.class.php';
 
 
 
