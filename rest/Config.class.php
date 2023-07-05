@@ -15,7 +15,7 @@ class Config
 
     public static function DB_PASSWORD()
     {
-        return Config::get_env("DB_PASSWORD", "");
+        return Config::get_env("DB_PASSWORD", "root");
     }
 
     public static function DB_SCHEMA()

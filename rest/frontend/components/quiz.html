@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!--    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <title>Drivio</title>
+
+    <!-- Custom styles for this template -->
+    <link href="css/quiz.css" rel="stylesheet">
+</head>
+<body>
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <header class="masthead">
+        <div class="inner">
+          <h3 class="masthead-brand">Drivio</h3>
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="btn btn-md btn-outline-light" href="javascript:NavigatorService.handleLogout()">Log out</a>
+          </nav>
+        </div>
+      </header>
+
+    <main role="main" class="inner cover">
+        <div class="back-button-container w-100">
+            <a href="javascript:NavigatorService.getCategorySelector()" class="btn btn-md btn-outline-light back-btn col-1">Back</a>
+        </div>
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar"
+                 style="width: 0"></div>
+        </div>
+        <div class="quiz-info justify-content-between">
+            <div>
+                <h1 class="cover-heading"></h1>
+            </div>
+            <div class="d-flex col-4 align-items-center">
+                <div class="quiz-progress-text"></div>
+            </div>
+        </div>
+        <div class="card-container quiz">
+            <div class="card">
+                <h3 class="question-text"></h3>
+                <div class="image-container d-flex justify-content-center">
+                    <img class="question-image" src="" style="display: none">
+                </div>
+                <div class="answers-container"></div>
+                <div class="correct-answer" style="display: none;"></div>
+            </div>
+            <div class="button-container">
+                <div id="submitAnswerBtn" class="btn btn-md btn-outline-light">Submit</div>
+                <div id="nextQuestionBtn" class="btn btn-md btn-outline-light" style="display: none">Next</div>
+            </div>
+        </div>
+        <div class="card-container score" style="display:none">
+            <div class="card p-4">
+                <div class="has-passed d-flex align-items-center justify-content-center my-4">
+                    <h2 class="has-passed-text"></h2>
+                </div>
+                <h3>Results:</h3>
+                <div class="answer-info d-flex justify-content-between">
+                    <div class="points-scored p-4 col-4 d-flex flex-column justify-content-center align-items-center">
+                        <div class="points-scored-value">20 / 120</div>
+                        <div class="points-scored-text">points scored</div>
+                    </div>
+                    <div class="right-answers p-4 col-4 d-flex flex-column justify-content-center align-items-center">
+                        <div class="right-answers-value">12 / 20</div>
+                        <div class="right-answers-text">right answers</div>
+                    </div>
+                    <div class="percentage-scored p-4 col-4 d-flex flex-column justify-content-center align-items-center">
+                        <div class="percentage-scored-value">63%</div>
+                        <div class="percentage-scored-text">success</div>
+                    </div>
+                </div>
+            </div>
+            <div class="button-container">
+                <a href="javascript:NavigatorService.getCategorySelector()" class="btn btn-md btn-outline-light">Finish</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="mastfoot mt-auto">
+        <div class="inner">
+            <p>Made with ❤️ by <a href="https://www.linkedin.com/in/ajdin-bajric/">Ajdin Bajrić</a> & <a
+                    href="https://www.linkedin.com/in/bakirmujkanovic/">Bakir Mujkanović</a>.</p>
+        </div>
+    </footer>
+</div>
+</body>
+</html>

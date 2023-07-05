@@ -13,6 +13,27 @@ Flight::route('GET /quiz/@id', function ($id) {
         Flight::json(['message' => 'Quiz does not exist']);
 });
 
+Flight::route('GET /quiz_data/@id', function ($id) {
+    $quiz = Flight::quizService()->get_quiz_data_by_id($id);
+    if ($quiz)
+        Flight::json($quiz);
+    else
+        Flight::json(['message' => 'Quiz does not exist']);
+});
+
+Flight::route('GET /quiz_by_quiz_type', function () {
+    $request = Flight::request();
+    $quiz_type_id = $request->query->quiz_type_id;
+    $category_name = $request->query->category_name;
+
+    $quizes = Flight::quizService()->get_by_quiz_type($quiz_type_id, $category_name);
+    if ($quizes)
+        Flight::json(['quizes' => $quizes], 200);
+    else
+        Flight::json(['message' => 'Quiz with specified type does not exist'], 400);
+});
+
+
 Flight::route('DELETE /quiz/@id', function ($id) {
     $quiz = Flight::quizService()->get_by_id($id);
     if (isset($quiz['id'])) {

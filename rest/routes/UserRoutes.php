@@ -49,12 +49,12 @@ Flight::route('POST /register', function () {
     $storedUser = Flight::userService()->get_user_by_username($registerUser['username']);
 
     if (isset($storedUser['id'])) {
-        Flight::json(["message" => "User with that username already exists. Try different username."], 404);
+        Flight::json(["message" => "Username already in use."], 409);
     } else {
-        $options = [
+        $hash_options = [
             'cost' => 10 // The higher the cost, the more secure the hash (but also slower to compute)
         ];
-        $registerUser['password'] = password_hash($registerUser['password'], PASSWORD_DEFAULT, $options);
+        $registerUser['password'] = password_hash($registerUser['password'], PASSWORD_DEFAULT, $hash_options);
         Flight::userService()->add_element($registerUser);
         Flight::json(["success" => "true"]);
     }
@@ -62,22 +62,19 @@ Flight::route('POST /register', function () {
 
 
 Flight::route('POST /login', function () {
-
     $login = Flight::request()->data->getData();
-
     $user = Flight::userService()->get_user_by_username($login['username']);
 
     if (isset($user['id'])) {
-
         if (password_verify($login['password'], $user['password'])) {
             unset($user['password']);
             $jwt = JWT::encode($user, Config::JWT_SECRET(), 'HS256');
-            Flight::json(['token' => $jwt]);
+            Flight::json(['access_token' => $jwt]);
         } else {
-            Flight::json(["message" => "Password is incorrect"], 404);
+            Flight::json(["message" => "Invalid credentials"], 400);
         }
     } else {
-        Flight::json(["message" => "User with that username doesn't exist"], 404);
+        Flight::json(["message" => "Invalid credentials"], 400);
     }
 });
 

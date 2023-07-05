@@ -38,9 +38,9 @@ Flight::route('PUT /question/@id', function ($id) {
     $new_data = Flight::request()->data->getData();
     $question = Flight::questionService()->get_by_id($id);
     $category = Flight::categoryService()->get_by_id($new_data['category']);
-    $question_type = Flight::questionTypeService()->get_by_id($new_data['category']);
+    $quiz_type = Flight::quizTypeService()->get_by_id($new_data['category']);
     if (!isset($category['id'])) $error_messages[] = "Category does not exist";
-    if (!isset($question_type['id'])) $error_messages[] = "Question type does not exist";
+    if (!isset($quiz_type['id'])) $error_messages[] = "Quiz type does not exist";
     if (!isset($question['id'])) $error_messages[] = "Question does not exist";
 
     if (count($error_messages) == 0) {
@@ -54,9 +54,9 @@ Flight::route('POST /question', function () {
     $error_messages = array();
     $new_question = Flight::request()->data->getData();
     $category = Flight::categoryService()->get_by_id($new_question['category']);
-    $question_type = Flight::questionTypeService()->get_by_id($new_question['category']);
+    $quiz_type = Flight::quizTypeService()->get_by_id($new_question['category']);
     if (!isset($category['id'])) $error_messages[] = "Category does not exist";
-    if (!isset($question_type['id'])) $error_messages[] = "Question type does not exist";
+    if (!isset($quiz_type['id'])) $error_messages[] = "Quiz type does not exist";
     if (count($error_messages) == 0) {
         if (array_key_exists('image', $new_question)) {
             $new_question['image'] = base64_decode($new_question['image']);
